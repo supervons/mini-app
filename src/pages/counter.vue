@@ -1,12 +1,14 @@
 <template>
   <div class="counter-warp">
+    <van-notice-bar
+      left-icon="volume-o"
+      text="本界面用于展示vuex的一些基础用法，详细用法请参考文档。"
+    />
     <p>Vuex counter：{{ count }}</p>
     <p>
       <button @click="increment">+</button>
       <button @click="decrement">-</button>
     </p>
-
-    <a href="/pages/index" class="home">去往首页</a>
   </div>
 </template>
 

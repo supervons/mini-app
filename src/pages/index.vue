@@ -1,5 +1,21 @@
 <template>
-  <div class="container" @click="clickHandle('test click', $event)">
+  <van-row>
+    <van-row>
+      <van-col span="8">span: 8</van-col>
+      <van-col span="8">span: 8</van-col>
+      <van-col span="8">span: 8</van-col>
+    </van-row>
+    <van-row>
+      <van-col span="8">
+        <van-tag type="danger">标签</van-tag>
+      </van-col>
+      <van-col span="8">
+        <van-tag type="primary">标签</van-tag>
+      </van-col>
+      <van-col span="8">
+        <van-tag type="success">标签</van-tag>
+      </van-col>
+    </van-row>
 
     <div class="userinfo" @click="bindViewTap">
       <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
@@ -7,11 +23,8 @@
         <card :text="userInfo.nickName"></card>
       </div>
     </div>
-    <van-button type="default">默认按钮</van-button>
-    <van-tag>标签1</van-tag>
-    <van-tag type="danger">标签</van-tag>
-    <van-tag type="primary">标签</van-tag>
-    <van-tag type="success">标签</van-tag>
+    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button>
+    <van-button type="default" @click="showToast">默认按钮</van-button>
 
     <div class="usermotto">
       <div class="user-motto">
@@ -23,8 +36,7 @@
       <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
       <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
     </form>
-    <a href="/pages/counter" class="counter">去往Vuex示例页面</a>
-  </div>
+  </van-row>
 </template>
 
 <script>
@@ -64,6 +76,13 @@ export default {
     clickHandle (msg, ev) {
       // eslint-disable-next-line
       console.log('clickHandle:', msg, ev)
+    },
+    showToast () {
+      wx.showToast({
+        title: '点击成功',
+        icon: 'success',
+        duration: 2000
+      })
     }
   },
 
