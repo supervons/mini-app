@@ -3,10 +3,15 @@
     {
       "path": "pages/index",
       "config": {
-        "navigationBarTitleText": "小程序"
+        "navigationBarTitleText": "国造智能"
       }
     },
-    "pages/counter",
+    {
+      "path": "pages/my",
+      "config": {
+        "navigationBarTitleText": "我的"
+      }
+    },
     {
       "path": "packageA/logs",
       "subPackage": true
@@ -31,10 +36,10 @@
         "selectedIconPath": "static/tabs/home-active.png"
       },
       {
-        "pagePath": "pages/counter",
-        "text": "vuex",
-        "iconPath": "static/tabs/orders.png",
-        "selectedIconPath": "static/tabs/orders-active.png"
+        "pagePath": "pages/my",
+        "text": "我的",
+        "iconPath": "static/tabs/my.png",
+        "selectedIconPath": "static/tabs/my-active.png"
       }
     ]
   },

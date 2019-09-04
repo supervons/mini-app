@@ -4,7 +4,7 @@
  */
 import Fly from 'flyio/dist/npm/wx'
 const fly = new Fly()
-const host = 'http://localhost:8080/commonProject'
+const host = 'http://192.168.0.116:8080/commonProject'
 // 添加请求拦截器
 fly.interceptors.request.use((request) => {
   wx.showLoading({

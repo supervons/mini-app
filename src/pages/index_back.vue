@@ -1,18 +1,42 @@
 <template>
   <van-row>
     <van-row>
-      <swiper :indicator-dots="indicatorDots"
-              autoplay="true" :interval="interval" :duration="duration">
-        <swiper-item
-          v-for="item in images"
-          :key="item.key">
-          <image style="width: 100%; background-color: #eeeeee;" mode="widthFix" :src="item.src"></image>
-        </swiper-item>
-      </swiper>
+      <van-col span="8">span: 8</van-col>
+      <van-col span="8">span: 8</van-col>
+      <van-col span="8">span: 8</van-col>
     </van-row>
     <van-row>
-      关于我们
+      <van-col span="8">
+        <van-tag type="danger">标签</van-tag>
+      </van-col>
+      <van-col span="8">
+        <van-tag type="primary">标签</van-tag>
+      </van-col>
+      <van-col span="8">
+        <van-tag type="success">标签</van-tag>
+      </van-col>
     </van-row>
+
+    <div class="userinfo" @click="bindViewTap">
+      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
+      <div class="userinfo-nickname">
+        <card :text="userInfo.nickName"></card>
+      </div>
+    </div>
+    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button>
+    <van-button type="default" @click="showaToast">默认按钮</van-button>
+
+    <div class="usermotto">
+      <div class="user-motto">
+        <card :text="motto"></card>
+      </div>
+    </div>
+
+    <form class="form-container">
+      <input type="text" class="form-control" v-model="userName" placeholder="用户名" />
+      <input type="text" class="form-control" v-model.lazy="passWord" placeholder="密码" />
+      <van-button type="primary" @click="login">登录</van-button>
+    </form>
   </van-row>
 </template>
 
@@ -24,15 +48,10 @@ export default {
 
   data () {
     return {
-      images: [
-        { key: 1, src: '/static/nav/banner.png' },
-        { key: 2, src: '/static/nav/banner2.png' },
-        { key: 3, src: '/static/nav/banner3.png' }
-      ],
-      indicatorDots: true,
-      autoplay: false,
-      interval: 5000,
-      duration: 1000
+      motto: 'Hello World',
+      userName: '',
+      passWord: '',
+      userInfo: {}
     }
   },
 
