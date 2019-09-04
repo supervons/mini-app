@@ -43,11 +43,19 @@
       }
     ]
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "我们将获取您的位置用于小程序位置接口的效果展示"
+    }
+  },
   "usingComponents": {
     "van-tag": "/vant-weapp/dist/tag/index",
     "van-button": "/vant-weapp/dist/button/index",
     "van-notice-bar": "/vant-weapp/dist/notice-bar/index",
     "van-row": "/vant-weapp/dist/row/index",
-    "van-col": "/vant-weapp/dist/col/index"
+    "van-col": "/vant-weapp/dist/col/index",
+    "van-panel": "/vant-weapp/dist/panel/index",
+    "van-collapse": "/vant-weapp/dist/collapse/index",
+    "van-collapse-item": "/vant-weapp/dist/collapse-item/index"
   }
 }

@@ -2,7 +2,7 @@
   <van-row>
     <van-notice-bar
       left-icon="volume-o"
-      text="本界面用于展示vuex的一些基础用法，详细用法请参考文档。"
+      text="国造智能有限公司致力于软件行业多年，期待与您的合作。"
     />
     <div class="userinfo">
       <open-data type="userAvatarUrl"></open-data>

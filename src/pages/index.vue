@@ -6,12 +6,22 @@
         <swiper-item
           v-for="item in images"
           :key="item.key">
-          <image style="width: 100%; background-color: #eeeeee;" mode="widthFix" :src="item.src"></image>
+          <image style="width: 100%; background-color: #eeeeee;" mode="widthFix" :src="item.src"/>
         </swiper-item>
       </swiper>
     </van-row>
-    <van-row>
-      关于我们
+    <van-row class="about">
+      <van-collapse :value="activeNames" @change="onChange" accordion>
+        <van-collapse-item title="公司概况" name="1">
+          公司拥有雄厚的人才资源。公司核心骨干来自于小米、闪银、中国创新支付集团等，凭借资深的行业经验，带领团队不断创新发展。公司成立至今，以其专业的平台实力、深厚的企业文化聚集了国内大批高端技术人才，不断夯实团队的技术实力基础。是获北京市政府认定的高新技术企业，拥有十余款软件著作权。经过十几年的磨砺，国造智能已成为高新科技行业的中流砥柱，凭借卓越的实力与强大的资源，不断在科技、金融领域展示出非凡的表现力与创造力。未来国造智能将继续深造科研，锐意创新，成为高新科技行业发展的助推力量。经过长时间的市场调研， 结合实践经验， 听取多位业内行家意见潜心研发。 我们引进最先进的大数据流量分析， 对用户进行精准定位， 提供最优质的系统服务。
+        </van-collapse-item>
+        <van-collapse-item title="联系我们" name="2">
+          <view>邮箱：xxx</view>
+          <view>地址：xxx</view>
+          <view>电话：xxx</view>
+        </van-collapse-item>
+      </van-collapse>
+      <button open-type="contact" bindcontact="handleContact">在线咨询</button>
     </van-row>
   </van-row>
 </template>
@@ -32,7 +42,8 @@ export default {
       indicatorDots: true,
       autoplay: false,
       interval: 5000,
-      duration: 1000
+      duration: 1000,
+      activeNames: ['1']
     }
   },
 
@@ -41,97 +52,23 @@ export default {
   },
 
   methods: {
-    bindViewTap () {
-      const url = '/packageA/logs'
-      this.$router.push(url)
-    },
-    getUserInfo () {
-      // 调用登录接口
-      wx.login({
-        success: () => {
-          wx.getUserInfo({
-            success: (res) => {
-              this.userInfo = res.userInfo
-            }
-          })
+    onChange (event) {
+      wx.getLocation({
+        type: 'wgs84',
+        success: (res) => {
+          console.log(res)
         }
       })
-    },
-    clickHandle (msg, ev) {
-      // eslint-disable-next-line
-      console.log('clickHandle:', msg, ev)
-    },
-    showaToast () {
-      // api 访问测试
-      wx.showToast({
-        title: '点击成功',
-        icon: 'warn',
-        duration: 2000
-      })
-      console.log(JSON.stringify(this.userInfo))
-    },
-    login () {
-      // api 访问测试
-      this.$fly.request({
-        method: 'post', // post/get 请求方式
-        url: '/user/loginAction',
-        body: { loginId: this.userName, passWord: this.passWord }
-      }).then(res => {
-        if (res.code === 'success') {
-          wx.showToast({
-            title: '登录成功',
-            icon: 'success',
-            duration: 2000
-          })
-        } else {
-          wx.showToast({
-            title: res.msg,
-            icon: 'none',
-            duration: 2000
-          })
-        }
-      })
+      this.activeNames = event.mp.detail
     }
-  },
-
-  created () {
-    // 调用应用实例的方法获取全局数据
-    this.getUserInfo()
   }
 }
 </script>
 
 <style scoped>
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-
-.form-control {
-  display: block;
-  padding: 0 12px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-}
-
-.counter {
+.about {
   display: inline-block;
-  margin: 10px auto;
-  padding: 5px 10px;
-  color: blue;
-  border: 1px solid blue;
+  margin-top: 20px;
+  width: 100%;
 }
 </style>
