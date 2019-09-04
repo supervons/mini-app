@@ -78,11 +78,20 @@ export default {
       console.log('clickHandle:', msg, ev)
     },
     showToast () {
+      // api 访问测试
+      this.$fly.request({
+        method: 'post', // post/get 请求方式
+        url: '/user/loginAction',
+        body: { loginId: '18888888888', passWord: '123456' }
+      }).then(res => {
+        console.log(res)
+      })
       wx.showToast({
         title: '点击成功',
         icon: 'success',
         duration: 2000
       })
+      console.log(JSON.stringify(this.userInfo))
     }
   },
 
